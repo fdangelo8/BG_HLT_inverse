@@ -1,0 +1,32 @@
+size 36 12 # N_s N_t
+
+points_for_inversion    6       #corr points used for inversion
+trash                   1       #number of points not used for inversion, starting from i_t = 0
+
+# input files
+
+boostrap_corr_file      correlator_bootstrap_ncool_10_k_0.dat   # file with sample bootstrap
+n_boot                  1000                                    # number of samples bootstrap
+mean_corr_file          mean_correlator_ncool_10_k_0.dat             # mean value of correlator
+
+#inserire il tipo di kernel e il punto in cui fare l'inversione
+
+Ezero                   0.0    #Il punto da cui inizio a integrare nella minimizzazione del funzionale				
+omega					0.0   #quella che viene chiamata estar nel codice
+
+#smearing function details (it is centered in omega)
+
+sigma                   0.14583333333  #sigma parameter target function in lattice units
+
+#BG-functional parameters
+
+apar                    1.99    #alpha parameter in A functional
+Lside                   850
+Rside                   160.89
+
+# output files
+
+smear_func_file         Delta_Smear                     # file target function reconstruction
+rho_vs_lambda_file      L_shape_K0_S0.145833333         # file output vs lambda
+output_file             Output_ens_sigma                # output vs sigma
+rs_vs_lambda_file       RS                              # file RS
