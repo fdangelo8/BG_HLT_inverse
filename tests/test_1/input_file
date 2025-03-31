@@ -26,7 +26,7 @@ Rside                   160
 
 # output files
 
-smear_func_file         sigma_0.1458333/omega_0.0/E0_0.0/Delta_Smear_cos_test_w_cov          # file target function reconstruction
-rho_vs_lambda_file      sigma_0.1458333/omega_0.0/E0_0.0/lambda_vs_rho_cos_test_w_cov        # file output vs lambda
-output_file             sigma_0.1458333/omega_0.0/E0_0.0/Output_ens_sigma_cos_test_w_cov     # output vs sigma
-rs_vs_lambda_file       sigma_0.1458333/omega_0.0/E0_0.0/RS_cos_test_w_cov                   # file RS
+smear_func_file         sigma_0.1458333/omega_0.0/E0_0.0/Delta_Smear_cos_test          # file target function reconstruction
+rho_vs_lambda_file      sigma_0.1458333/omega_0.0/E0_0.0/lambda_vs_rho_cos_test        # file output vs lambda
+output_file             sigma_0.1458333/omega_0.0/E0_0.0/Output_ens_sigma_cos_test     # output vs sigma
+rs_vs_lambda_file       sigma_0.1458333/omega_0.0/E0_0.0/RS_cos_test                   # file RS

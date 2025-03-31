@@ -2,7 +2,10 @@
 
 set -e
 
-INVERSE_PATH='/home/francesco/Scrivania/BG_HLT_inverse/include'
+INVERSE_PATH=''
+gmpfrxx_dir_PATH=''
+include_pkgs_PATH=''
+lib_pkgs_PATH=''
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 #@@@@@@@@@@@@             SMEARING EXTRACTION            @@@@@@@@@@@@#
@@ -29,7 +32,7 @@ boolM=1
 #If 0  -> exp
 #If 1  -> cosh
 #If 2  -> omega*(cosh/sinh), used for the computation of the sphal rate
-#If 3  -> for tests
+#If 3  -> ((1-exp(-beta*omega))/2) * (cosh/sinh), for the computation of the sphal rate k not zero
 #basis
 boolB=2
 
@@ -43,7 +46,7 @@ boolTF=1
 #If 0 Cov(i,j)=0  if i!=j
 #If 1 Cov(i,j)!=0 if i!=j
 #target
-boolCov=1
+boolCov=0
 
  
 #Define Method 
@@ -100,6 +103,6 @@ fi
 
 
 #Compile with all the libraries
-g++ -O$optimization -std=c++14 -o main_cos_sphal_w_cov ../src/main.cpp ../lib/params.c ../lib/smear.c ../lib/statistical.c -I../packages/gmpfrxx -L../packages/gmpfrxx -I../include_pkg -L../lib_pkg -lgmpfrxx -lmpfr -lgmpxx -lgmp -lm -lgsl -lgslcblas $Method $Basis $Target $Cov
+g++ -O$optimization -std=c++14 -o main ../src/main.cpp ../lib/params.c ../lib/smear.c ../lib/statistical.c -I${gmpfrxx_dir_PATH} -L${gmpfrxx_dir_PATH} -I${include_pkgs_PATH} -L${lib_pkgs_PATH} -lgmpfrxx -lmpfr -lgmpxx -lgmp -lm -lgsl -lgslcblas $Method $Basis $Target $Cov
 
 echo 'Ciao!'
