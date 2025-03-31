@@ -99,12 +99,13 @@ rs_vs_lambda_file       RS.dat
 
       </div>
 
-      where $\Delta(\omega,\bar{\omega})$ is the __reconstructed function__ and $\delta(\omega,\bar{\omega})$ the __target function__.
+      where $`\Delta(\omega,\bar{\omega})`$ is the __reconstructed function__ and $`\delta(\omega,\bar{\omega})`$ the __target function__.
 
-   -  `rho_vs_lambda_file` gives the final result as a function of $\lambda$ and $\delta A_0[g_t(\lambda)]$, where 
-      $$
-      \delta A_\alpha[g_t(\lambda)]\equiv\frac{\int_{E_0}^\infty d\omega [\Delta(\omega,\bar{\omega})-\delta(\omega,\bar{\omega})]^2 e^{\alpha\omega}}{\int_{E_0}^\infty d\omega [\delta(\omega,\bar{\omega})]^2e^{\alpha\omega}} ,
-      $$
+   -  `rho_vs_lambda_file` gives the final result as a function of $`\lambda`$ and $`\delta A_0[g_t(\lambda)]`$, where
+     <div align="center">
+      $`\delta A_\alpha[g_t(\lambda)]\equiv\frac{\int_{E_0}^\infty d\omega [\Delta(\omega,\bar{\omega})-\delta(\omega,\bar{\omega})]^2 e^{\alpha\omega}}{\int_{E_0}^\infty d\omega [\delta(\omega,\bar{\omega})]^2e^{\alpha\omega}}`$
+      </div>
+
       and it has 4 columns  
       <div align="center">
 
@@ -113,7 +114,7 @@ rs_vs_lambda_file       RS.dat
 
       </div>
 
-      where $\bar{\rho}_\lambda(\bar{\omega})$ and $d\bar{\rho}_\lambda(\bar{\omega})$ are the mean value and the error of the smeared reconstructed quantity we are interested in, as a function of $\lambda$.
+      where $`\bar{\rho}_\lambda(\bar{\omega})`$ and $`d\bar{\rho}_\lambda(\bar{\omega})`$ are the mean value and the error of the smeared reconstructed quantity we are interested in, as a function of $\lambda$.
 
    - `final_res.dat` is a file with just 1 row and 3 column file of the type
       <div align="center">
@@ -123,7 +124,7 @@ rs_vs_lambda_file       RS.dat
 
       </div>
 
-      where $\sigma$ is the width of $\delta(\omega,\bar{\omega})$ while $\bar{\rho}(\bar{\omega})$ and $d\bar{\rho}(\bar{\omega})$ are the mean value and the error of the final estimation.
+      where $`\sigma`$ is the width of $`\delta(\omega,\bar{\omega})`$ while $`\bar{\rho}(\bar{\omega})`$ and $`d\bar{\rho}(\bar{\omega})`$ are the mean value and the error of the final estimation.
    - `rs_vs_lambda_file` is a 4 columns file
       <div align="center">
 
@@ -133,9 +134,12 @@ rs_vs_lambda_file       RS.dat
       </div>
 
       where
-      $$
-      B[g_t(\lambda)]\equiv \sum_{t,t'=0}^{1/T}\mathrm{Cov}_{tt'} g_t g_{t'}
-      $$
+     
+      <div align="center">
+     $B[g_t(\lambda)]\equiv \sum_{t,t'=0}^{1/T}\mathrm{Cov}_{tt'} g_t g_{t'}$
+
+       </div>
+       
       and it is important to fix the parameters `Lside` and `Rside` in the `input_file`.
 
 ## Contributors <a name="contributors"></a>
