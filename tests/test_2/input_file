@@ -1,0 +1,32 @@
+size 48 12 # N_s N_t
+
+points_for_inversion    6       #corr points used for inversion
+trash                   1       #number of points not used for inversion, starting from i_t = 0
+
+# input files
+
+boostrap_corr_file      correlator_bootstrap_ncool_10_k_1.dat   # file with sample bootstrap
+n_boot                  1000                                    # number of samples bootstrap
+mean_corr_file          mean_correlator_ncool_10_k_1.dat    # mean value of correlator
+#mean_corr_file  mean_fake                      
+
+#inserire il tipo di kernel e il punto in cui fare l'inversione
+
+Ezero           0.0  			
+omega			0.1308996938995747   
+#smearing function details (it is centered in omega)
+
+sigma                   0.1458333  #sigma parameter target function in lattice units
+
+#BG-functional parameters
+
+apar                    1.99   #alpha parameter in A functional
+Lside                   0.000000000001
+Rside                   0.000000000001
+
+# output files
+
+smear_func_file         sigma_0.1458333/omega_0.13089/E0_0.0/Delta_Smear_cos_sphal               # file target function reconstruction
+rho_vs_lambda_file      sigma_0.1458333/omega_0.13089/E0_0.0/lambda_vs_rho_cos_sphal       # file output vs lambda
+output_file             sigma_0.1458333/omega_0.13089/E0_0.0/Output_ens_sigma_cos_sphal               # output vs sigma
+rs_vs_lambda_file       sigma_0.1458333/omega_0.13089/E0_0.0/RS_cos_sphal                        # file RS

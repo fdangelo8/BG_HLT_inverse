@@ -41,8 +41,16 @@ make install
 wget https://math.berkeley.edu/~wilken/code/gmpfrxx/gmpfrxx.zip
 unzip file.zip
 cd gmpfrxx
-vi README #to see how to test gmpfrxx 
+vi README #to see how to install and test gmpfrxx 
 ```
+With the version of `gmp` and `mpfr` I reported, comment lines 74-75 of `example.cpp` before doing `make`, otherwise you get the error:
+```bash
+example.cpp:74:25: error: ‘GMP_RND_MAX’ was not declared in this scope; did you mean ‘GMP_RNDD’?
+   74 |     mpfr_class::set_rnd(GMP_RND_MAX);
+      |                         ^~~~~~~~~~~
+```
+You can also try to install the version of `gmp` and `mpfr` reported in the `README` file and try if everything works without commenting the two lines.  
+Finally, remember to specify the paths of `mpfr` and `gmp` in the `Makefile` before doing `make`.
 ## Usage <a name="usage"></a>
 To compile the code, in the `BG_HLT_inverse` directory
 ```bash

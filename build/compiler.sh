@@ -2,7 +2,7 @@
 
 set -e
 
-INVERSE_PATH='/home/francesco/Scrivania/inversion_code/BG_HLT_inverse/include'
+INVERSE_PATH='/home/francesco/Scrivania/BG_HLT_inverse/include'
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#
 #@@@@@@@@@@@@             SMEARING EXTRACTION            @@@@@@@@@@@@#
@@ -31,7 +31,7 @@ boolM=1
 #If 2  -> omega*(cosh/sinh), used for the computation of the sphal rate
 #If 3  -> for tests
 #basis
-boolB=1
+boolB=2
 
 #Choice of the traget function
 #If 0 Gaussian
@@ -43,7 +43,7 @@ boolTF=1
 #If 0 Cov(i,j)=0  if i!=j
 #If 1 Cov(i,j)!=0 if i!=j
 #target
-boolCov=0
+boolCov=1
 
  
 #Define Method 
@@ -95,11 +95,11 @@ fi
 
 if [ $boolCov -eq 1 ]
 then
-    Target="-D COV"
+    Cov="-D COV"
 fi
 
 
 #Compile with all the libraries
-g++ -O$optimization -std=c++14 -o main_cos ../src/main.cpp ../lib/params.c ../lib/smear.c ../lib/statistical.c -I../packages/gmpfrxx -L../packages/gmpfrxx -I../include_pkg -L../lib_pkg -lgmpfrxx -lmpfr -lgmpxx -lgmp -lm -lgsl -lgslcblas $Method $Basis $Target $Cov
+g++ -O$optimization -std=c++14 -o main_cos_sphal_w_cov ../src/main.cpp ../lib/params.c ../lib/smear.c ../lib/statistical.c -I../packages/gmpfrxx -L../packages/gmpfrxx -I../include_pkg -L../lib_pkg -lgmpfrxx -lmpfr -lgmpxx -lgmp -lm -lgsl -lgslcblas $Method $Basis $Target $Cov
 
 echo 'Ciao!'

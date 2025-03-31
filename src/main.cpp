@@ -65,44 +65,29 @@ int main(int argc, char *argv[])
   cout << "********* " << param.Estar  << " *********" << endl;
   cout << "L: " << param.Ns << " #Points: " << param.n_points <<  " Nt: " << param.Nt << " dLim: " << param.dLim << " uLim: " << param.uLim << " trash: " << param.trash << " sigma: " << param.sigma  << " Estar: " << param.Estar << "apar:" << param.apar  << endl;
 
-  //Defining lambda vector (logarithmic scan from 1e-10 to 9e-1)
+  //Defining lambda vector (logarithmic scan from 1e-15 to 0.99999)
   for(int ilambda=0; ilambda<Nlambda; ilambda++)
 	{
-		if(ilambda < 9) lambda(ilambda) = conv(to_string(ilambda+1))*Real("1e-30");
-		else if(ilambda >= 9  and ilambda < 18) lambda(ilambda) = conv(to_string(ilambda-9+1))*Real("1e-29");
-		else if(ilambda >= 18 and ilambda < 27) lambda(ilambda) = conv(to_string(ilambda-18+1))*Real("1e-28");
-		else if(ilambda >= 27 and ilambda < 36) lambda(ilambda) = conv(to_string(ilambda-27+1))*Real("1e-27");
-		else if(ilambda >= 36 and ilambda < 45) lambda(ilambda) = conv(to_string(ilambda-36+1))*Real("1e-26");
-		else if(ilambda >= 45 and ilambda < 54) lambda(ilambda) = conv(to_string(ilambda-45+1))*Real("1e-25");
-		else if(ilambda >= 54 and ilambda < 63) lambda(ilambda) = conv(to_string(ilambda-54+1))*Real("1e-24");
-		else if(ilambda >= 63 and ilambda < 72) lambda(ilambda) = conv(to_string(ilambda-63+1))*Real("1e-23");
-		else if(ilambda >= 72 and ilambda < 81) lambda(ilambda) = conv(to_string(ilambda-72+1))*Real("1e-22");
-		else if(ilambda >= 81 and ilambda < 90) lambda(ilambda) = conv(to_string(ilambda-81+1))*Real("1e-21");
-    else if(ilambda >= 90 and ilambda < 99) lambda(ilambda) = conv(to_string(ilambda-90+1))*Real("1e-20");
-    else if(ilambda >= 99 and ilambda < 108) lambda(ilambda) = conv(to_string(ilambda-99+1))*Real("1e-19");
-    else if(ilambda >= 108 and ilambda < 117) lambda(ilambda) = conv(to_string(ilambda-108+1))*Real("1e-18");
-    else if(ilambda >= 117 and ilambda < 126) lambda(ilambda) = conv(to_string(ilambda-117+1))*Real("1e-17");
-    else if(ilambda >= 126 and ilambda < 135) lambda(ilambda) = conv(to_string(ilambda-126+1))*Real("1e-16");
-    else if(ilambda >= 135 and ilambda < 144) lambda(ilambda) = conv(to_string(ilambda-135+1))/1000000000000000;
-    else if(ilambda >= 144 and ilambda < 153) lambda(ilambda) = conv(to_string(ilambda-144+1))/100000000000000;
-    else if(ilambda >= 153 and ilambda < 162) lambda(ilambda) = conv(to_string(ilambda-153+1))/10000000000000;
-    else if(ilambda >= 162 and ilambda < 171) lambda(ilambda) = conv(to_string(ilambda-162+1))/1000000000000;
-    else if(ilambda >= 171 and ilambda < 180) lambda(ilambda) = conv(to_string(ilambda-171+1))/100000000000;
-    else if(ilambda >= 180 and ilambda < 189) lambda(ilambda) = conv(to_string(ilambda-180+1))/10000000000;
-    else if(ilambda >= 189 and ilambda < 198) lambda(ilambda) = conv(to_string(ilambda-189+1))/1000000000;
-    else if(ilambda >= 198 and ilambda < 207) lambda(ilambda) = conv(to_string(ilambda-198+1))/100000000;
-    else if(ilambda >= 207 and ilambda < 216) lambda(ilambda) = conv(to_string(ilambda-207+1))/10000000;
-    else if(ilambda >= 216 and ilambda < 225) lambda(ilambda) = conv(to_string(ilambda-216+1))/1000000;
-    else if(ilambda >= 225 and ilambda < 234) lambda(ilambda) = conv(to_string(ilambda-225+1))/100000;
-    else if(ilambda >= 234 and ilambda < 243) lambda(ilambda) = conv(to_string(ilambda-234+1))/10000;
-    else if(ilambda >= 243 and ilambda < 252) lambda(ilambda) = conv(to_string(ilambda-243+1))/1000;
-    else if(ilambda >= 252 and ilambda < 261) lambda(ilambda) = conv(to_string(ilambda-252+1))/100;
-    else if(ilambda >= 261 and ilambda < 270) lambda(ilambda) = conv(to_string(ilambda-261+1))/10;
-    else if(ilambda >= 270 and ilambda < 279) lambda(ilambda) = Real("0.9")+conv(to_string(ilambda-270+1))/100;
-    else if(ilambda >= 279 and ilambda < 288) lambda(ilambda) = Real("0.99")+conv(to_string(ilambda-279+1))/1000;
-    else if(ilambda >= 288 and ilambda < 297) lambda(ilambda) = Real("0.999")+conv(to_string(ilambda-288+1))/10000;
-    else if(ilambda >= 297 and ilambda < 306) lambda(ilambda) = Real("0.9999")+conv(to_string(ilambda-297+1))/100000;
-    else if(ilambda >= 306 and ilambda < 315) lambda(ilambda) = Real("0.99999")+conv(to_string(ilambda-306+1))/1000000;
+		if(ilambda < 9) lambda(ilambda) = conv(to_string(ilambda+1))*Real("1e-15");
+		else if(ilambda >= 9  and ilambda < 18) lambda(ilambda) = conv(to_string(ilambda-9+1))*Real("1e-14");
+		else if(ilambda >= 18 and ilambda < 27) lambda(ilambda) = conv(to_string(ilambda-18+1))*Real("1e-13");
+		else if(ilambda >= 27 and ilambda < 36) lambda(ilambda) = conv(to_string(ilambda-27+1))*Real("1e-12");
+		else if(ilambda >= 36 and ilambda < 45) lambda(ilambda) = conv(to_string(ilambda-36+1))*Real("1e-11");
+		else if(ilambda >= 45 and ilambda < 54) lambda(ilambda) = conv(to_string(ilambda-45+1))*Real("1e-10");
+		else if(ilambda >= 54 and ilambda < 63) lambda(ilambda) = conv(to_string(ilambda-54+1))*Real("1e-9");
+		else if(ilambda >= 63 and ilambda < 72) lambda(ilambda) = conv(to_string(ilambda-63+1))*Real("1e-8");
+		else if(ilambda >= 72 and ilambda < 81) lambda(ilambda) = conv(to_string(ilambda-72+1))*Real("1e-7");
+		else if(ilambda >= 81 and ilambda < 90) lambda(ilambda) = conv(to_string(ilambda-81+1))*Real("1e-6");
+    else if(ilambda >= 90 and ilambda < 99) lambda(ilambda) = conv(to_string(ilambda-90+1))*Real("1e-5");
+    else if(ilambda >= 99 and ilambda < 108) lambda(ilambda) = conv(to_string(ilambda-99+1))*Real("1e-4");
+    else if(ilambda >= 108 and ilambda < 117) lambda(ilambda) = conv(to_string(ilambda-108+1))*Real("1e-3");
+    else if(ilambda >= 117 and ilambda < 126) lambda(ilambda) = conv(to_string(ilambda-117+1))*Real("1e-2");
+    else if(ilambda >= 126 and ilambda < 135) lambda(ilambda) = conv(to_string(ilambda-126+1))*Real("1e-1");
+    else if(ilambda >= 135 and ilambda < 144) lambda(ilambda) = Real("0.9")+conv(to_string(ilambda-135+1))/100;
+    else if(ilambda >= 144 and ilambda < 153) lambda(ilambda) = Real("0.99")+conv(to_string(ilambda-144+1))/1000;
+    else if(ilambda >= 153 and ilambda < 162) lambda(ilambda) = Real("0.999")+conv(to_string(ilambda-153+1))/10000;
+    else if(ilambda >= 162 and ilambda < 171) lambda(ilambda) = Real("0.9999")+conv(to_string(ilambda-162+1))/100000;
+    else if(ilambda >= 171 and ilambda < 180) lambda(ilambda) = Real("0.99999")+conv(to_string(ilambda-171+1))/1000000;
 	}
 
   //BOOTSTRAP

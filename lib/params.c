@@ -283,7 +283,7 @@ void read_input(char *input_file_name, inv_params *param)
     fclose(input_fp);
 }
 
-const int Nlambda = 315;  // Definition of Nlambda
+const int Nlambda = 180;  // Definition of Nlambda
 PrecVec lambda = PrecVec::Zero(Nlambda);
 Real lambda1, lambda2;
 int ilambda1, ilambda2;
