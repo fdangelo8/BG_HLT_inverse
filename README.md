@@ -13,18 +13,64 @@ This is a modified version of the HLT Backus--gilbert code provided by M. Navigl
 git clone https://github.com/your-username/project-name.git
 
 # Navigate into the project directory
-cd project-name
-
-# Install dependencies 
-bla bla bla
+cd BG_HLT_inverse
+```
+The following dipendencies are required.
+### gmp 
+```bash
+wget https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.gz
+tar -xzvf gmp-6.3.0.tar.gz
+cd gmp-6.3.0
+./configure --prefix=${HOME}
+make
+make check
+make install
+```
+### mpfr
+```bash 
+wget https://www.mpfr.org/mpfr-current/mpfr-4.2.1.tar.gz
+tar -xzvf mpfr-4.2.1.tar.gz
+cd mpfr-4.2.1
+./configure --prefix=${HOME}
+make
+make check
+make install
+```
+### gmpfrxx
+```bash
+wget https://math.berkeley.edu/~wilken/code/gmpfrxx/gmpfrxx.zip
+unzip file.zip
+cd gmpfrxx
+vi README #to see how to test gmpfrxx 
 ```
 ## Usage <a name="usage"></a>
-To compile the code
+To compile the code, in the `BG_HLT_inverse` directory
 ```bash
 cd build
 bash compiler.sh
 ```
-All the available flags have are properly commented in`compiler.sh` file. 
+All the available flags have are properly commented in`compiler.sh` file.  
+
+Remember to specify the path of `include` directory in `compiler.sh`
+```bash
+INVERSE_PATH='${YOUR_PATH}/BG_HLT_inverse/include'
+```
+and specify the path of `gmpfrxx` directory and all the libraries previously installed
+```bash
+g++ -O$optimization -std=c++14 -o main ../src/main.cpp ../lib/params.c ../lib/smear.c ../lib/statistical.c -I${YOUR_PATH}$/gmpfrxx -L${YOUR_PATH}/gmpfrxx -I${INCLUDE_PATH_LIBRARIES} -L${LIB_PATH_LIBRARIES} -lgmpfrxx -lmpfr -lgmpxx -lgmp -lm -lgsl -lgslcblas $Method $Basis $Target $Cov
+
+```
+After the compilation, you are ready to use the code:
+```bash
+./main input_file
+```
+You can also launch the code without the `input_file` path to see how it was compiled, for instance
+```bash
+> ./main
+Compiled with COS_SPHAL basis
+Compiled with PSEUDO_GAUSS target
+Usage: ./main <input_file>
+```
 
 ## Contributors <a name="contributors"></a>
  - M. Naviglio
