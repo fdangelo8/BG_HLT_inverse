@@ -351,8 +351,8 @@ void Print_Study_Lambda(char output_file[], PrecVec Dens_Mu, PrecVec Dens_S, Rea
   fprintf(Lambda_Shape_out, "#lambda\td[g_t]\tdens_mu(lambda)\tdens_err(lambda)\n");
   for(int ilambda=0; ilambda<Nlambda; ilambda++)
   {
-    cout << "lambda: " << lambda(ilambda) << "\td[g]: " << sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta)) << endl; 
-    fprintf(Lambda_Shape_out, "%s\t%s\t%s\t%s\n", conv(lambda(ilambda)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda)).c_str(), conv(Dens_S(ilambda)).c_str());
+    cout << "lambda: " << lambda(ilambda) << "\td[g]: " << sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), 0, A, f, Estar, sigma, norm, beta)) << endl; 
+    fprintf(Lambda_Shape_out, "%s\t%s\t%s\t%s\n", conv(lambda(ilambda)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), 0, A, f, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda)).c_str(), conv(Dens_S(ilambda)).c_str());
   }
 
   fclose(Lambda_Shape_out);
