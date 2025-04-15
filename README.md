@@ -101,20 +101,24 @@ rs_vs_lambda_file       RS.dat
 
       where $`\Delta(\omega,\bar{\omega})`$ is the __reconstructed function__ and $`\delta(\omega,\bar{\omega})`$ the __target function__.
 
-   -  `rho_vs_lambda_file` gives the final result as a function of $`\lambda`$ and $`\delta A_0[g_t(\lambda)]`$, where
+   -  `rho_vs_lambda_file` gives the final result as a function of $`\lambda`$, $`\sqrt{\delta A_0[g_t(\lambda)]}`$, $`d[g_t]\equiv\sqrt{A_0/B}`$, where
      <div align="center">
       $`\delta A_\alpha[g_t(\lambda)]\equiv\frac{\int_{E_0}^\infty d\omega [\Delta(\omega,\bar{\omega})-\delta(\omega,\bar{\omega})]^2 e^{\alpha\omega}}{\int_{E_0}^\infty d\omega [\delta(\omega,\bar{\omega})]^2e^{\alpha\omega}}`$
       </div>
+      and
+      <div align="center">
+      $B[g_t(\lambda)]\equiv \sum_{t,t'=0}^{1/T}\mathrm{Cov}_{tt'} g_t g_{t'}$
 
-      and it has 4 columns  
+       </div>
+      This file has has 5 columns  
       <div align="center">
 
-      | $\lambda$ |$\delta A_0[g_t(\lambda)]$ | $\bar{\rho}_\lambda(\bar{\omega})$ |$d\bar{\rho}_\lambda(\bar{\omega})$|
-      |-----------|-----------|-----------|-----------| 
+      | $\lambda$ |$\sqrt{\delta A_0[g_t(\lambda)]}$ | $d[g_t]$ | $\bar{\rho}_\lambda(\bar{\omega})$ |$d\bar{\rho}_\lambda(\bar{\omega})$|
+      |-----------|-----------|-----------|-----------|-----------| 
 
       </div>
 
-      where $`\bar{\rho}_\lambda(\bar{\omega})`$ and $`d\bar{\rho}_\lambda(\bar{\omega})`$ are the mean value and the error of the smeared reconstructed quantity we are interested in, as a function of $\lambda$.
+      $`\bar{\rho}_\lambda(\bar{\omega})`$ and $`d\bar{\rho}_\lambda(\bar{\omega})`$ are the mean value and the error of the smeared reconstructed quantity we are interested in.
 
    - `final_res.dat` is a file with just 1 row and 3 column file of the type
       <div align="center">
@@ -135,10 +139,7 @@ rs_vs_lambda_file       RS.dat
 
       where
      
-      <div align="center">
-     $B[g_t(\lambda)]\equiv \sum_{t,t'=0}^{1/T}\mathrm{Cov}_{tt'} g_t g_{t'}$
 
-       </div>
        
       and it is important to fix the parameters `Lside` and `Rside` in the `input_file`.
 

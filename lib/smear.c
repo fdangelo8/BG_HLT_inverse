@@ -348,11 +348,11 @@ void Print_Study_Lambda(char output_file[], PrecVec Dens_Mu, PrecVec Dens_S, Rea
   PrecMatr A0 = A_Comp(t, Estar_double, 0, beta, Nt, E0);
   PrecVec f0 = f_func(t, sigma, Estar, E0, 0, Nt, beta, norm);
   
-  fprintf(Lambda_Shape_out, "#lambda\td[g_t]\tdens_mu(lambda)\tdens_err(lambda)\n");
+  fprintf(Lambda_Shape_out, "#lambda\tA[g]/Tar_Int\td[g_t]\tdens_mu(lambda)\tdens_err(lambda)\n");
   for(int ilambda=0; ilambda<Nlambda; ilambda++)
   {
-    cout << "lambda: " << lambda(ilambda) << "\td[g]: " << sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), 0, A, f, Estar, sigma, norm, beta)) << endl; 
-    fprintf(Lambda_Shape_out, "%s\t%s\t%s\t%s\n", conv(lambda(ilambda)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), 0, A, f, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda)).c_str(), conv(Dens_S(ilambda)).c_str());
+    cout << "lambda: " << lambda(ilambda) << "\tA[g]/Tar_Int: " << sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta)) << "\td[g]: " << sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)) << endl; 
+    fprintf(Lambda_Shape_out, "%s\t%s\t%s\t%s\t%s\n", conv(lambda(ilambda)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta))).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda)).c_str(), conv(Dens_S(ilambda)).c_str());
   }
 
   fclose(Lambda_Shape_out);
@@ -366,14 +366,14 @@ void Print_Study_Lambda(char output_file[], PrecVec Dens_Mu, PrecVec Dens_S, Rea
     exit(EXIT_FAILURE);
   }
 
-  fprintf(file_final_points, "#lambda\td[g_t]\tdens_mu(lambda)\tdens_err(lambda)\n");
+  fprintf(file_final_points, "#lambda\tA[g]/Tar_Int\td[g_t]\tdens_mu(lambda)\tdens_err(lambda)\n");
 
 
-  fprintf(file_final_points, "%s\t%s\t%s\t%s\n", conv(lambda(ilambda1)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda1), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda1)).c_str(), conv(Dens_S(ilambda1)).c_str());
+  fprintf(file_final_points, "%s\t%s\t%s\t%s\t%s\n", conv(lambda(ilambda1)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda1), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta))).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda1), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda1), 0, A0, f0, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda1)).c_str(), conv(Dens_S(ilambda1)).c_str());
 
-  fprintf(file_final_points, "%s\t%s\t%s\t%s\n", conv(lambda(ilambda2)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda2), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda2)).c_str(), conv(Dens_S(ilambda2)).c_str());
+  fprintf(file_final_points, "%s\t%s\t%s\t%s\t%s\n", conv(lambda(ilambda2)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda2), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta))).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda2), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda2), 0, A0, f0, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda2)).c_str(), conv(Dens_S(ilambda2)).c_str());
 
-  fprintf(file_final_points, "%s\t%s\t%s\t%s\n", conv(lambda(ilambda2)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda2), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda2)).c_str(), conv(SigmaF).c_str());
+  fprintf(file_final_points, "%s\t%s\t%s\t%s\t%s\n", conv(lambda(ilambda2)).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda2), 0, A0, f0, Estar, sigma, norm, beta)/Target_Int(0, Estar, sigma, norm, beta))).c_str(), conv(sqrt(W_func_comp(0,Corr_Z, Cov, gl.row(ilambda2), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda2), 0, A0, f0, Estar, sigma, norm, beta))).c_str(), conv(Dens_Mu(ilambda2)).c_str(), conv(SigmaF).c_str());
 
   fclose(file_final_points);  
 }
