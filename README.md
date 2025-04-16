@@ -29,7 +29,7 @@ make install
 ```
 ### mpfr
 ```bash 
-wget https://www.mpfr.org/mpfr-current/mpfr-4.2.1.tar.gz
+wget https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.xz
 tar -xzvf mpfr-4.2.1.tar.gz
 cd mpfr-4.2.1
 ./configure --prefix=${HOME}
