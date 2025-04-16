@@ -216,7 +216,7 @@ int main(int argc, char *argv[])
   }
  
   cout << "QUI" << endl;
-  Residual_Study(param.rs_vs_lambda, Corr_Mu(0), Cov, gl, t, f, A, param.Estar, param.sigma, param.apar, param.dLim, param.uLim, normalization, param.Nt);
+  Residual_Study(param.rs_vs_lambda, Corr_Mu(0), Cov, gl, t, f, A, param.Estar, param.sigma, param.apar, param.dLim, param.uLim, normalization, param.Nt, param.n_points, param.E0);
   cout << "SSS1 " << Dens_S(ilambda2) << "  " << Dens_S(ilambda1) << "  " << Dens_Mu(ilambda1) << "  " << Dens_Mu(ilambda2) << endl;
   Real SigmaF = Sigma(Dens_S(ilambda2), Dens_S(ilambda1), Dens_Mu(ilambda1), Dens_Mu(ilambda2));
 

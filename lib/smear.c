@@ -296,25 +296,30 @@ Real W_func_comp(Real lambda, Real Corr_zero, PrecMatr Cov, PrecVec g, double ap
   return (1-lambda)*(A1+A2+A3)+B;
 }
 
-void Residual_Study(char out_res_study[], Real Corr_Z, PrecMatr Cov, PrecMatr gl, Real t[], PrecVec f, PrecMatr A, Real Estar, Real sigma, double apar, double dLim, double uLim, Real norm, Real beta)
+void Residual_Study(char out_res_study[], Real Corr_Z, PrecMatr Cov, PrecMatr gl, Real t[], PrecVec f, PrecMatr A, Real Estar, Real sigma, double apar, double dLim, double uLim, Real norm, Real beta, int Nt, Real E0)
 {
   FILE *RS;
   if ((RS = fopen(out_res_study, "w")) == NULL)
   {
     printf("Error opening the input file: %s\n", out_res_study);
     exit(EXIT_FAILURE);
-  } 
-  int a=0;  
+  }
+
+  double Estar_double = Estar.convert_to<double>();
+  PrecMatr A0 = A_Comp(t, Estar_double, 0, beta, Nt, E0);
+  PrecVec f0 = f_func(t, sigma, Estar, E0, 0, Nt, beta, norm);
+
+  int a=0;
   for(int ilambda=0; ilambda<Nlambda; ilambda++)
   {
     fprintf(RS, "%s\t%s\t%s\t%s\n", conv(lambda(ilambda)).c_str(), conv(W_func_comp(0, Corr_Z, Cov, gl.row(ilambda), apar, A, f, Estar, sigma, norm, beta)/Target_Int(apar, Estar, sigma, norm, beta)).c_str(), conv(W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), apar, A, f, Estar, sigma, norm, beta)).c_str(), conv((W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), apar, A, f, Estar, sigma, norm, beta)/(W_func_comp(0, Corr_Z, Cov, gl.row(ilambda), apar, A, f, Estar, sigma, norm, beta))*Target_Int(apar, Estar, sigma, norm, beta))).c_str());
-    if(dLim*W_func_comp(0, Corr_Z, Cov, gl.row(ilambda), apar, A, f, Estar, sigma, norm, beta)/Target_Int(apar, Estar, sigma, norm, beta)>W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), apar, A, f, Estar, sigma, norm, beta) and a==0)
+    if(dLim<sqrt(W_func_comp(0, Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)) and a==0)
     {
       lambda1 = lambda(ilambda-1);
       ilambda1=ilambda;
       a++;
     }
-    if(uLim*W_func_comp(0, Corr_Z, Cov, gl.row(ilambda), apar, A, f, Estar, sigma, norm, beta)/Target_Int(apar, Estar, sigma, norm, beta)>W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), apar, A, f, Estar, sigma, norm, beta) and a==1)
+    if(uLim<sqrt(W_func_comp(0, Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)/W_func_comp(1, Corr_Z, Cov, gl.row(ilambda), 0, A0, f0, Estar, sigma, norm, beta)) and a==1)
     {
       lambda2 = lambda(ilambda-1);
       ilambda2=ilambda;

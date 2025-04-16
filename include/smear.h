@@ -34,7 +34,7 @@ Real W_func_comp(Real lambda, Real Corr_zero, PrecMatr Cov, PrecVec g, double ap
 // SOME OUTPUT FUNCTIONS
 //Output Smearing function
 void smear_reconstruction_output(char open_Delta_S[], Real t_a[], PrecVec g, double Es, Real s, Real beta, int Nt, Real norm);
-void Residual_Study(char out_res_study[], Real Corr_Z, PrecMatr Cov, PrecMatr gl, Real t[], PrecVec f, PrecMatr A, Real Estar, Real sigma, double apar, double dLim, double uLim, Real norm, Real beta);
+void Residual_Study(char out_res_study[], Real Corr_Z, PrecMatr Cov, PrecMatr gl, Real t[], PrecVec f, PrecMatr A, Real Estar, Real sigma, double apar, double dLim, double uLim, Real norm, Real beta, int Nt, Real E0);
 Real Sigma(Real Sigma_Stat2, Real Sigma_Stat1, Real M_1, Real M_2);
 void Print_Study_Lambda(char output_file[], PrecVec Dens_Mu, PrecVec Dens_S, Real Corr_Z, PrecMatr Cov, Real Estar, Real sigma, PrecMatr gl, Real t[], Real SigmaF, int Nt, Real beta, Real E0, Real norm);
 
