@@ -334,7 +334,7 @@ void Residual_Study(char out_res_study[], Real Corr_Z, PrecMatr Cov, PrecMatr gl
 
 Real Sigma(Real Sigma_Stat2, Real Sigma_Stat1, Real M_1, Real M_2)
 {
-  Real Ps = M_1-M_2/Sigma_Stat1;
+  Real Ps = (M_1-M_2)/Sigma_Stat1;
   Real syst = abs(M_1-M_2)*erf(abs(Ps)/sqrt(2));
   return sqrt(Sigma_Stat2*Sigma_Stat2 + syst*syst); 
 }
